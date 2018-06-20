@@ -1,7 +1,9 @@
 <?php
 namespace Controller\Admin;
+
 use Controller\Controller;
 use Model\DB;
+
 class UserController extends Controller
 {
 	public function index()
@@ -10,18 +12,20 @@ class UserController extends Controller
 	}
 	public function login_do()
 	{
-		$username = $_POST['username'];
-		$userpawd = $_POST['userpawd'];
-		$res = "select * from user where username = '$username'";
-		if(!$res){
-			echo "用户名不存在";
-		}else{
-			if($res['userpawd'] == $userpawd){
-				echo "登录成功";
-			}else{
-				echo "密码错误";
-			}
-		}
+    	$username=$_POST['username'];
+       	$userpawd=$_POST['userpawd'];
+		$medel=new DB();
+    	$sql=$medel->select('select * from user');
+    	$sql=$sql[0];
+       	if($sql['username']==$username){
+       		if ($userpawd==$sql['userpawd']) {
+        		$this->alert('登录成功','./?s=admin&c=Index&a=index');
+    		} else {
+       			$this->alert('密码错误','./?s=admin&c=User&a=login');
+       		}
+       	} else {
+       		$this->alert('用户名不正确','./?s=admin&c=User&a=login');
+       	}
 	}
 }
 ?>

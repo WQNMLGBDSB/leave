@@ -33,14 +33,4 @@ class DB
 		$result = $this->pdo->query($sql);
 		return $result->fetchAll();
 	}
-
-	public function update()
-	{
-
-	}
-
-	public function delete()
-	{
-
-	}
 }
