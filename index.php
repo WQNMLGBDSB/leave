@@ -1,26 +1,14 @@
 <?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006-2014 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: liu21st <liu21st@gmail.com>
-// +----------------------------------------------------------------------
-
-// 应用入口文件
-header("content-type:text/html;charset=utf8");
-// 检测PHP环境
-if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
-
-// 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
-define('APP_DEBUG',True);
-
-// 定义应用目录
-define('APP_PATH','./Application/');
-
-// 引入ThinkPHP入口文件
-require './ThinkPHP/ThinkPHP.php';
-
-// 亲^_^ 后面不需要任何代码了 就是如此简单
+define('APP_HOST', $_SERVER['HTTP_HOST']);
+$controller = isset($_GET['c']) ? ucfirst($_GET['c']) : 'IndexController';
+$action = isset($_GET['a']) ? $_GET['a'] : 'index';
+$config = include('./Config/config.php');
+include('./function.php');
+use Controller\Controller;
+					//前台
+$controller = 'Controller\Home\\'.$controller;
+					// 后台
+// $controller = 'Controller\Admin\\'.$controller;
+// print_r($controller);die;
+$obj = new $controller();
+$obj->$action();
