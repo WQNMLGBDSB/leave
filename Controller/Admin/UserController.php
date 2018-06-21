@@ -30,9 +30,5 @@ class UserController extends Controller
           $this->display("Admin/login");
      	}
 	}
-  public function img_add()
-  {
-    
-  }
 }
 ?>

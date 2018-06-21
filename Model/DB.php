@@ -12,19 +12,16 @@ class DB
 		$this->pdo = new \PDO('mysql:host='.$db['host'].';dbname='.$db['dbname'], $db['username'], $db['password']);
 	}
 
-	public function add($table_name, $params)
+	public function insert($table_name,$params)
 	{
 		$sql = 'insert into '.$table_name;
-
 		$filed = '(';
 		$value = ' values (';
 		foreach($params as $key => $val){
 			$filed .= $key.',';
-			$value .= $val.',';
+			$value .=" '$val',";
 		}
-
 		$sql .= trim($filed, ',').')'.trim($value, ',').')';
-
 		return $this->pdo->exec($sql);
 	}
 
