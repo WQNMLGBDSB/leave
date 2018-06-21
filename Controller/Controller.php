@@ -5,7 +5,8 @@ class Controller
 	public $assign;
 	public function display($path)
 	{
-		include './view/'.$path.'.html';
+		include './view/'.$path.'.php';
+		print_r($path);die;
 		extract($this->assign);
 	}
 

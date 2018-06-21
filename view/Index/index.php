@@ -21,8 +21,8 @@
 <header class="header-web">
   <nav>
    <a href="" class="logo" title="柚段子" rel="home"><img src="./public/img/logo.png" alt="柚段子Logo"></a>
-   <form method="get" class="search">
-      <input class="text" type="text" name="s" placeholder="Search" value="">   
+   <form action="index.php?controller=IndexController&action=search" method="get" class="search">
+      <input class="text" type="text" name="s" placeholder="请输入想要查询的关键字" value="">   
     </form>
     <ul class="nav-list">
 	  <li id="menu-item-1296" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1296"><a href="">干货</a></li>
@@ -55,9 +55,7 @@ var swiper = new Swiper('.hmFocus .swiper-container', {
 	autoplay: 5500,
 	paginationClickable: true
 });
-</script>
-  
-            
+</script>    
    <section class="list">
        <span class="titleimg">
   <img width="1000" height="556" src="./public/img/lo-1000x556.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" sizes="(max-width: 1000px) 100vw, 1000px"></span>
